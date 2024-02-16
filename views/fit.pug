@@ -1,0 +1,68 @@
+extends layout
+block content
+  section.background-fit
+    section#about
+      h2 About it
+      p We offer a variety of fitness classes to help you achieve your fitness goals.
+
+    section#classes
+      h2 Our Classes
+      section.classes
+        .class-item
+          img(src='yoga.jpg' alt='body building')
+          h3 Body Building
+          p Join our relaxing yoga classes to improve flexibility and reduce stress.
+          button.add-to-cart JOIN
+        .class-item
+          img(src='spin.jpg' alt='muscle gaining')
+          h3 Muscle Gaining
+          p Get your heart pumping with our high-energy spin classes.
+          button.add-to-cart JOIN
+        .class-item
+          img(src='spin.jpg' alt='weight loss')
+          h3 Weight Loss
+          p Get your heart pumping with our high-energy spin classes.
+          button.add-to-cart JOIN
+
+    section#shopping-cart
+      h2 Shopping Cart
+      ul#cart-items
+      p
+        | Total: 
+        span#cart-total $0.00
+      button#checkout-button Checkout
+  footer.contact
+    h1.section-header CONTACT
+    p(style='text-align: center') Send any suggestions or queries using the form below. 
+      section
+      // Left contact page
+      form#contact-form.form-horizontal(role='form')
+    .form-group
+      input#name.form-control(type='text', placeholder='NAME', name='name', value='', required='')
+    .form-group
+      input#email.form-control(type='email', placeholder='EMAIL', name='email', value='', required='')
+    .form-group
+      textarea.form-control(rows='10', placeholder='MESSAGE', name='message', required='')
+    .form-group
+      button#submit.btn.btn-primary.send-button(type='submit', value='SEND')
+        .alt-send-button
+          i.fa.fa-paper-plane
+          span.send-text SEND
+    script.
+      document.addEventListener("DOMContentLoaded", function () {
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        const cartItemsList = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const classItem = this.parentElement;
+            const className = classItem.querySelector("h3").textContent;
+            const classPrice = 10;
+            const cartItem = document.createElement("li");
+            cartItem.textContent = `${className} - $${classPrice}`;
+            cartItemsList.appendChild(cartItem);
+            const currentTotal = parseFloat(cartTotal.textContent.replace("$", ""));
+            cartTotal.textContent = `$${(currentTotal + classPrice).toFixed(2)}`;
+          });
+        });
+      });

@@ -1,0 +1,52 @@
+extends layout
+block content
+  footer#contacts(style='background-color: var(--dark);')
+    #contact
+      h1.section-header Contact
+      .flex
+        // Left contact page
+        form#contact-form.form-horizontal(role='form')
+          .form-group
+            input#name.form-control(type='text', placeholder='NAME', name='name', value='', required='')
+          .form-group
+            input#email.form-control(type='email', placeholder='EMAIL', name='email', value='', required='')
+          .form-group
+            textarea.form-control(rows='10', placeholder='MESSAGE', name='message', required='')
+          .form-group
+            button#submit.btn.btn-primary.send-button(type='submit', value='SEND')
+              .alt-send-button
+                i.fa.fa-paper-plane
+                span.send-text SEND
+        // Left contact page
+        .direct-contact-container
+          ul.contact-list
+            li.list-item
+              i.fa.fa-map-marker.fa-2x
+                span.contact-text.place
+                  | City,
+                  | County
+            li.list-item
+              i.fa.fa-phone.fa-2x
+                span.contact-text.phone
+                  a(href='tel:+254743540231', title='Give me a call')
+                    | tel:
+                    | +254743540231
+            li.list-item
+              i.fa.fa-envelope.fa-2x
+                span.contact-text.gmail
+                  a(href='mailto:#', title='Send me an email') njeriaisha2@gmail.com
+          hr
+          ul.social-media-list
+            li
+              a.contact-icon(href='https://twitter.com/JAishaN006')
+                img(src='images/twitter-logo.png', width='25', height='25')
+            li
+              a.contact-icon(href='https://github.com/aisha006')
+                img(src='images/github-logo.png', width='30', height='30')
+            li
+              a.contact-icon(href='https://instagram.com/j.aisha.n')
+                img(src='images/instagram-png-image.png', width='30', height='30')
+            li
+              a.contact-icon(href='https://www.linkedin.com/in/aisha-njeri-aa71a9289?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bj0niEaJTQD28Te822KWWuw%3D%3D')
+                img(src='images/linkedin logo.png', width='30', height='30')
+  .copyright(style='background-color: var(--darker);') &copy; ALL OF THE RIGHTS RESERVED

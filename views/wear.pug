@@ -1,0 +1,110 @@
+extends layout
+block content
+  section.background-wear
+    section
+      h2 Shop Gym Wear and Accessories
+    section
+      h4 Gym Wear
+    div.product-container
+      .product
+        img(src='tshirt.jpg' alt='Gym T-Shirt')
+        h3 Gym T-Shirt
+        p.price $20.00
+        button.add-to-cart(data-product='Gym T-Shirt') Add to Cart
+      .product
+        img(src='leggings.jpg' alt='Gym Leggings')
+        h3 Gym Leggings
+        p.price $30.00
+        button.add-to-cart(data-product='Gym Leggings') Add to Cart
+      .product
+        img(src='tshirt.jpg' alt='Gym T-Shirt')
+        h3 Gym T-Shirt
+        p.price $20.00
+        button.add-to-cart(data-product='Gym T-Shirt') Add to Cart
+      .product
+        img(src='tshirt.jpg' alt='Gym T-Shirt')
+        h3 Gym T-Shirt
+        p.price $20.00
+        button.add-to-cart(data-product='Gym T-Shirt') Add to Cart
+      .product
+        img(src='tshirt.jpg' alt='Gym T-Shirt')
+        h3 Gym T-Shirt
+        p.price $20.00
+        button.add-to-cart(data-product='Gym T-Shirt') Add to Cart
+      .product
+        img(src='leggings.jpg' alt='Gym Leggings')
+        h3 Gym Leggings
+        p.price $30.00
+        button.add-to-cart(data-product='Gym Leggings') Add to Cart
+      .product
+        img(src='leggings.jpg' alt='Gym Leggings')
+        h3 Gym Leggings
+        p.price $30.00
+        button.add-to-cart(data-product='Gym Leggings') Add to Cart
+      .product
+        img(src='leggings.jpg' alt='Gym Leggings')
+        h3 Gym Leggings
+        p.price $30.00
+        button.add-to-cart(data-product='Gym Leggings') Add to Cart
+      // Add more products here
+      // Shopping Cart Section
+    section
+      h4 Gym Accessories
+    div.product-container
+      .product
+        img(src='smartwatch.jpg' alt='smartwatch')
+        h3 smartwatch
+        p.price $20.00
+        button.add-to-cart(data-product='smartwatch') Add to Cart
+      .product
+        img(src='waterbottle.jpg' alt='waterbottle')
+        h3 water bottle
+        p.price $30.00
+        button.add-to-cart(data-product='waterbottle') Add to Cart
+      .product
+        img(src='resistanceband.jpeg' alt='resistanceband')
+        h3 Gym resistance band
+        p.price $20.00
+        button.add-to-cart(data-product='resistanceband') Add to Cart
+    section#shopping-cart
+      h2 Shopping Cart
+      ul#cart-items
+      p
+        | Total: 
+        span#cart-total $0.00
+      button#checkout-button Checkout
+    footer.contact
+      h1.section-header CONTACT
+      p(style='text-align: center') Send any suggestions or queries using the form below. 
+        section
+        // Left contact page
+        form#contact-form.form-horizontal(role='form')
+      .form-group
+        input#name.form-control(type='text', placeholder='NAME', name='name', value='', required='')
+      .form-group
+        input#email.form-control(type='email', placeholder='EMAIL', name='email', value='', required='')
+      .form-group
+        textarea.form-control(rows='10', placeholder='MESSAGE', name='message', required='')
+      .form-group
+        button#submit.btn.btn-primary.send-button(type='submit', value='SEND')
+          .alt-send-button
+            i.fa.fa-paper-plane
+            span.send-text SEND
+    script.
+      document.addEventListener("DOMContentLoaded", function () {
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        const cartItemsList = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const classItem = this.parentElement;
+            const className = classItem.querySelector("h3").textContent;
+            const classPrice = 10;
+            const cartItem = document.createElement("li");
+            cartItem.textContent = `${className} - $${classPrice}`;
+            cartItemsList.appendChild(cartItem);
+            const currentTotal = parseFloat(cartTotal.textContent.replace("$", ""));
+            cartTotal.textContent = `$${(currentTotal + classPrice).toFixed(2)}`;
+          });
+        });
+      });

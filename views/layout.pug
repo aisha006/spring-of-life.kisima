@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title KISIMA
+    link(rel='stylesheet', href='css/styles.css')
+    link(rel='icon' href='https://cdn-icons-png.flaticon.com/256/1384/1384060.png')
+  body.background
+    header
+      a#logo(href='#') Your Logo
+      nav#navbar
+        .dropdown
+          span(style='font-size: 24px; cursor: pointer;') &#x2630;
+          .dropdown-content
+            a(href='/') Home
+            a(href='/fitness') Fitness
+            a(href='/mindfulness') Mindfulness
+            a(href='/gymwear') Gym Wear & Accessories
+        a(href='/contact') Contact
+        if user_id == undefined || user_id == null
+          a(href="/signin" type="button" class="login-button") login
+        else
+          Hello !{user_name} 
+          a(href="/signout" type="button" class="login-button") logout
+
+    main
+      block content

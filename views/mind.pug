@@ -1,0 +1,104 @@
+extends layout
+block content
+  section.mind
+    section.background-mind
+      section
+      h1 About
+      P It contains media related to bible teachings
+      section.hub
+        h1 LifeStream Hub
+        p 
+          |Welcome to our LifeStream Hub, where we bring the timeless teachings of the Bible to life through engaging videos and podcasts.
+          |Immerse yourself in a digital journey that combines modern technology with the ageless wisdom of biblical teachings.
+          |This section is designed to cater to various learning styles, offering dynamic and accessible content to enhance your spiritual growth.
+          |We invite you to explore, learn, and grow in your faith as you engage with the rich multimedia offerings available in this section of our website.
+
+        a.submit-button(href='/lifestream') Get Started
+        h3 Video Library:
+        p 
+          |Explore our extensive Video Library, where we curate a diverse collection of content that delves into different aspects of biblical teachings.
+          |From insightful sermons and thought-provoking discussions to visual interpretations of scripture, our videos aim to resonate with audiences of all ages.
+          |Whether you're a seasoned Bible scholar or just starting your spiritual journey, you'll find content that speaks to your heart.
+          ul
+            li Sermons and Teachings: Watch inspiring sermons from our passionate speakers as they break down complex biblical concepts and provide practical insights for daily living.
+
+            li Visual Scripture Interpretations: Experience the Bible in a new light through visually captivating presentations that bring key passages to life.
+
+            li Testimonials and Stories: Hear personal stories of transformation and faith from individuals who have been profoundly impacted by biblical teachings.
+
+        h3 Podcast Corner:
+        p 
+          |Tune in to our Podcast Corner for an immersive audio experience that allows you to engage with biblical teachings wherever you go.
+          |Our podcasts cover a wide range of topics, providing a convenient way to incorporate spiritual insights into your daily routine.
+        ul
+          li Biblical Expositions: Delve into in-depth explorations of specific passages, characters, and themes from the Bible with our knowledgeable hosts.
+
+          li Conversations and Panel Discussions: Listen to engaging conversations and panel discussions that address contemporary issues through the lens of biblical principles.
+
+          li Devotional Moments: Find solace and inspiration in short, uplifting devotional episodes that encourage reflection and prayer.
+
+        h3 Interactive Features:
+        p 
+          |Enhance your learning experience with interactive features that foster community engagement and spiritual growth.
+        ul
+          li Discussion Forums: Join discussions with like-minded individuals, share your thoughts on featured content, and connect with a community passionate about biblical teachings.
+
+          li Live Q&A Sessions: Participate in live question-and-answer sessions with our experienced speakers, providing an opportunity to seek clarification and gain deeper insights.
+
+          li Resource Downloads: Access supplementary materials, study guides, and additional resources to complement the multimedia content and support your learning journey.
+
+        p 
+          |Embark on a digital pilgrimage through our LifeStream Hub, where the power of technology converges with the timeless wisdom of the Bible. 
+          
+        button 
+          a(href='/lifestream')
+      section
+        h1 E-book
+        .class
+          img(src='book of life.jpg' alt='bible')
+          h3 bible
+          p this is the book of life that gives teachings guided by the Holy Spirit.
+          p.price Kshs 30
+          button.add-to-cart add to cart
+        section#shopping-cart
+        h2 Shopping Cart
+        ul#cart-items
+        p
+          | Total: 
+          span#cart-total $0.00
+        button#checkout-button Checkout  
+    footer.contact
+      h1.section-header CONTACT
+      p(style='text-align: center') Send any suggestions or queries using the form below. 
+        section
+        // Left contact page
+        form#contact-form.form-horizontal(role='form')
+      .form-group
+        input#name.form-control(type='text', placeholder='NAME', name='name', value='', required='')
+      .form-group
+        input#email.form-control(type='email', placeholder='EMAIL', name='email', value='', required='')
+      .form-group
+        textarea.form-control(rows='10', placeholder='MESSAGE', name='message', required='')
+      .form-group
+        button#submit.btn.btn-primary.send-button(type='submit', value='SEND')
+          .alt-send-button
+            i.fa.fa-paper-plane
+            span.send-text SEND
+      script.
+        document.addEventListener("DOMContentLoaded", function () {
+          const addToCartButtons = document.querySelectorAll(".add-to-cart");
+          const cartItemsList = document.getElementById("cart-items");
+          const cartTotal = document.getElementById("cart-total");
+          addToCartButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+              const classItem = this.parentElement;
+              const className = classItem.querySelector("h3").textContent;
+              const classPrice = 10;
+              const cartItem = document.createElement("li");
+              cartItem.textContent = `${className} - $${classPrice}`;
+              cartItemsList.appendChild(cartItem);
+              const currentTotal = parseFloat(cartTotal.textContent.replace("$", ""));
+              cartTotal.textContent = `$${(currentTotal + classPrice).toFixed(2)}`;
+            });
+          });
+        });
